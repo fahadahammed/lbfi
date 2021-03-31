@@ -13,8 +13,7 @@ import shutil
 import click
 
 project_name = "LinuxBanglaFontInstaller"
-version = "1.0"
-full_project_name = project_name + "-" + version
+full_project_name = project_name
 font_source = "https://github.com/fahadahammed/linux-bangla-fonts/raw/master/archieve/lsaBanglaFonts.tar.gz"
 tmp_name = str(base64.b64encode(str(str(datetime.datetime.now().isoformat()) + "_" + full_project_name).encode("utf-8")).decode("utf-8") + ".tar.gz").replace('=', '')
 extracted_folder_name = "/tmp/"
@@ -65,7 +64,6 @@ def install():
     click.echo(f"""
     # --------------------------
         Welcome to Linux Bangla Font Installer !
-        Current Version: {version}
     # --------------------------
         Installing the fonts.......
     """)
