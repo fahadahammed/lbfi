@@ -13,8 +13,7 @@ import shutil
 import click
 
 project_name = "LinuxBanglaFontInstaller"
-version = "1.0"
-full_project_name = project_name + "-" + version
+full_project_name = project_name
 font_source = "https://github.com/fahadahammed/linux-bangla-fonts/raw/master/archieve/lsaBanglaFonts.tar.gz"
 tmp_name = str(base64.b64encode(str(str(datetime.datetime.now().isoformat()) + "_" + full_project_name).encode("utf-8")).decode("utf-8") + ".tar.gz").replace('=', '')
 extracted_folder_name = "/tmp/"
@@ -55,17 +54,26 @@ def clean_folder(choice=None):
             exit()
 
 
+def read_pyproject_toml():
+    with open(file="pyproject.toml") as tomlfile:
+        lines = tomlfile.readlines()
+        for line in lines:
+            if "version" in line:
+                return line.split('"')[-2]
+
+
+@click.version_option(read_pyproject_toml())
 @click.group()
 def cli():
     """lbfi stands for Linux Bangla Font Installer. You can avail the fonts for your linux desktop easily with this tool."""
     pass
+
 
 @click.command()
 def install():
     click.echo(f"""
     # --------------------------
         Welcome to Linux Bangla Font Installer !
-        Current Version: {version}
     # --------------------------
         Installing the fonts.......
     """)
