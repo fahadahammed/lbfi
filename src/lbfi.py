@@ -54,10 +54,20 @@ def clean_folder(choice=None):
             exit()
 
 
+def read_pyproject_toml():
+    with open(file="pyproject.toml") as tomlfile:
+        lines = tomlfile.readlines()
+        for line in lines:
+            if "version" in line:
+                return line.split('"')[-2]
+
+
+@click.version_option(read_pyproject_toml())
 @click.group()
 def cli():
     """lbfi stands for Linux Bangla Font Installer. You can avail the fonts for your linux desktop easily with this tool."""
     pass
+
 
 @click.command()
 def install():
