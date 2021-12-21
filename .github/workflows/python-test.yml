@@ -20,7 +20,7 @@ jobs:
         pip install pylint poetry
     - name: Analysing the code with pylint
       run: |
-        pylint $(find . -name "*.py" | xargs)
+        pylint $(find src/ -name "*.py" | xargs)
     - name: Check via Poetry
       run: poetry check
     - name: Test Via Unittest Module
