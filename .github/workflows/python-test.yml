@@ -21,11 +21,11 @@ jobs:
         pip install pylint poetry
     - name: Analysing the code with pylint
       run: |
-        set -x
         pylint $(find src/ -name "*.py" | xargs)
+        echo $?
     - name: Check via Poetry
       run: poetry check
     - name: Test Via Unittest Module
       run: |
-        set -x
         poetry run python3 -m unittest test/test.py
+        echo $?
