@@ -38,7 +38,7 @@ Make a fork and clone the source locally. Make sure you have -
 #### Dependency
 
 - click
-- poetry
+- poetry (Development Dependency)
 - requests
 
 
