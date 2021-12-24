@@ -11,7 +11,7 @@ import tarfile
 import os
 import shutil
 import urllib.request as ur
-import click
+import argparse
 
 
 project_name = "LinuxBanglaFontInstaller"
@@ -66,15 +66,8 @@ def read_pyproject_toml():
                 return line.split('"')[-2]
 
 
-@click.version_option(read_pyproject_toml())
-@click.group()
-def cli():
-    """lbfi stands for Linux Bangla Font Installer. You can avail the fonts for your linux desktop easily with this tool."""
-
-
-@click.command()
-def install():
-    click.echo("""
+def install_fonts():
+    print("""
     # --------------------------
         Welcome to Linux Bangla Font Installer !
     # --------------------------
@@ -85,11 +78,33 @@ def install():
     clean_folder()
     extract(file_name=download_file(url=font_source))
     clean_folder(choice="end")
-    click.echo("Font installation completed !")
+    print("Font installation completed !")
 
-@click.command()
-def config():
-    click.echo('Configuration Store !')
 
-cli.add_command(install)
-cli.add_command(config)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=f"""lbfi stands for Linux Bangla Font Installer. 
+    You can avail the fonts for your linux desktop easily with this tool.
+    """, epilog=f"lbfi, v{read_pyproject_toml()}")
+    parser.add_argument('--install',
+                        choices=["yes", "no"],
+                        help='Do you want to clean install the fonts? i.e. yes|no:')
+    parser.add_argument('--update',
+                        choices=["yes", "no"],
+                        help='Want to update the fonts? i.e. yes|no:')
+    parser.add_argument('--version', action='version', version="lbfi, " + "v" + read_pyproject_toml())
+
+    args = parser.parse_args()
+
+    install = args.install
+    update = args.update
+
+    if install == "yes" and update != "yes":
+        install_fonts()
+        sys.exit()
+    elif update == "yes" and install != "yes":
+        print("Update")
+        sys.exit()
+    else:
+        print("No action provided.")
+        sys.exit()
+

@@ -19,7 +19,7 @@ $ pip3 install --upgrade lbfi
 ## Usage
 
 ```bash
-$ lbfi install
+$ lbfi --install yes
 ```
 
 It will install the fonts in your home directory.
