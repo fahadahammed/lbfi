@@ -23,10 +23,6 @@ jobs:
         pylint --exit-zero $(find src/ -name "*.py" | xargs)
     - name: Check via Poetry
       run: poetry check
-    - name: check dirs
-      run: |
-        pwd
-        ls
     - name: Test Via Unittest Module
       run: |
-        poetry run python3 -m unittest test/test.py || true
+        poetry run python3 -m unittest test.py || true
