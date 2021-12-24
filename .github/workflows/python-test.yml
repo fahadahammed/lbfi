@@ -17,7 +17,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pylint poetry click
+        python -m pip install pylint poetry click
     - name: Analysing the code with pylint
       run: |
         pylint --exit-zero $(find src/ -name "*.py" | xargs)
