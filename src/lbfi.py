@@ -10,7 +10,7 @@ import sys
 import tarfile
 import os
 import shutil
-import requests
+import urllib.request as ur
 import click
 
 
@@ -26,13 +26,13 @@ downloaded_file_name = str(extracted_folder_name + tmp_name)
 
 
 def download_file(url):
-    # open in binary mode
-    with open(downloaded_file_name, "wb") as file:
-        # get request
-        response = requests.get(url)
-        # write to file
-        file.write(response.content)
-    return str(downloaded_file_name)
+    try:
+        file_url = url
+        ur.urlretrieve(file_url, downloaded_file_name)
+        return str(downloaded_file_name)
+    except Exception as ex:
+        print(ex)
+        return False
 
 
 def extract(file_name):

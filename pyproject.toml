@@ -1,14 +1,13 @@
 [tool.poetry]
 name = "lbfi"
 version = "0.1.6"
-description = "lbfi stands for Linux Bangla Font Installer. You can avail the fonts for your linux desktop easily with this tool."
+description = "lbfi stands for Linux Bangla Font Installer. You can avail the fonts for your linux desktop easily with this tool. The main purpose of this tool is to easy installation of different and useful bangla fonts for your linux system."
 authors = ["fahadahammed <iamfahadahammed@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.6"
-requests = "^2.26.0"
 click = "^8.0.3"
 
 [tool.poetry.dev-dependencies]
