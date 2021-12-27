@@ -22,6 +22,8 @@ jobs:
     - name: Check Package
       run: |
         poetry check
+    - name: Install
+      run: poetry install
     - name: Build package
       run: poetry build
     - name: Publish
