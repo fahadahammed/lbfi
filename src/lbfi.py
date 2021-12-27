@@ -81,7 +81,7 @@ def install_fonts():
     print("Font installation completed !")
 
 
-if __name__ == "__main__":
+def __main__():
     parser = argparse.ArgumentParser(description=f"""lbfi stands for Linux Bangla Font Installer. 
     You can avail the fonts for your linux desktop easily with this tool.
     """, epilog=f"lbfi, v{read_pyproject_toml()}")
