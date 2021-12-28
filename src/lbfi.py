@@ -59,7 +59,10 @@ def clean_folder(choice=None):
 
 
 def read_pyproject_toml():
-    with open(file="pyproject.toml") as tomlfile:
+    the_pyproject_toml_file = os.path.dirname(os.path.realpath(__file__)) + os.sep + "pyproject.toml"
+    if not os.path.exists(the_pyproject_toml_file):
+        the_pyproject_toml_file = the_pyproject_toml_file.replace("/src", "")
+    with open(file=the_pyproject_toml_file) as tomlfile:
         lines = tomlfile.readlines()
         for line in lines:
             if "version" in line:
