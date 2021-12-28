@@ -19,6 +19,9 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install poetry
+    - name: Copy pyproject
+      run: |
+        cp pyproject.toml src/pyproject.toml
     - name: Check Package
       run: |
         poetry check
