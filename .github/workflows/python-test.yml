@@ -26,6 +26,3 @@ jobs:
     - name: Test Via Unittest Module
       run: |
         poetry run python3 -m unittest test/test.py || true
-    - name: Try1
-      run: |
-        echo ".....: ${{ github.ref }}"
