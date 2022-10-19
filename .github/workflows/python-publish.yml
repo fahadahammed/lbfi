@@ -19,11 +19,10 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install poetry
-        cat pyproject.toml
     - name: Copy pyproject
       run: |
         echo "Hi: ${{ github.ref }}"
-        sed -i "s|.*version.*|version = ${{ github.ref }}|g" pyproject.toml 
+        sed -i "s|.*version.*|version = `echo ${{ github.ref }} | sed 's|/|\t|g' | awk '{print $NF}'`|g" pyproject.toml 
         cp pyproject.toml src/pyproject.toml
         cat pyproject.toml
 
