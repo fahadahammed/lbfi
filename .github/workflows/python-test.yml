@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.6"]
+        python-version: ["3.9"]
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
@@ -26,3 +26,6 @@ jobs:
     - name: Test Via Unittest Module
       run: |
         poetry run python3 -m unittest test/test.py || true
+    - name: Try1
+      run: |
+        echo ".....: ${{ github.ref }}"
