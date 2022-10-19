@@ -21,7 +21,8 @@ jobs:
         pip install poetry
     - name: Copy pyproject
       run: |
-        sed "s|.*version.*|version = `git tag -l | sed -n 1p`|g" pyproject.toml > src/pyproject.toml
+        sed -i "s|.*version.*|version = `git tag -l | sed -n 1p`|g" pyproject.toml 
+        cp pyproject.toml src/pyproject.toml
 
     - name: Check Package
       run: |
