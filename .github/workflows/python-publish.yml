@@ -19,6 +19,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install poetry
+        cat pyproject.toml
     - name: Copy pyproject
       run: |
         echo "Hi: ${{ github.ref }}"
