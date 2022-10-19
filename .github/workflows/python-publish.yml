@@ -21,8 +21,8 @@ jobs:
         pip install poetry
     - name: Copy pyproject
       run: |
-        echo "${{ GITHUB_REF_NAME }}"
-        sed "s|.*version.*|/c${{ GITHUB_REF_NAME }}|g" pyproject.toml > src/pyproject.toml
+        echo "${{ env.GITHUB_REF_NAME }}"
+        sed "s|.*version.*|/c${{ env.GITHUB_REF_NAME }}|g" pyproject.toml > src/pyproject.toml
 
     - name: Check Package
       run: |
